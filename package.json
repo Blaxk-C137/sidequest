@@ -1,0 +1,33 @@
+{
+  "name": "blaxaura",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @blaxaura/shared && npm run build -w @blaxaura/server && npm run build -w @blaxaura/web",
+    "build:shared": "npm run build -w @blaxaura/shared",
+    "dev": "npm run build:shared && concurrently -n server,web -c magenta,cyan \"npm run dev -w @blaxaura/server\" \"npm run dev -w @blaxaura/web\"",
+    "start": "node apps/server/dist/index.js",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "test": "npm run build:shared && npm run test --workspaces --if-present",
+    "test:e2e": "playwright test",
+    "db:reset": "node scripts/reset-db.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@playwright/test": "^1.64.1",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.0",
+    "globals": "^16.4.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0"
+  }
+}
