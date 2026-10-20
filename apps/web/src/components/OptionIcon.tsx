@@ -1,0 +1,80 @@
+import {
+  Blend,
+  Briefcase,
+  Brush,
+  CalendarDays,
+  Circle,
+  Cloud,
+  CloudSun,
+  Crown,
+  EyeOff,
+  Feather,
+  Flame,
+  Flower2,
+  Footprints,
+  Gem,
+  Heart,
+  Layers,
+  Leaf,
+  Minus,
+  Mountain,
+  Palette,
+  PartyPopper,
+  Repeat,
+  Scissors,
+  Shield,
+  Shuffle,
+  Sparkles,
+  Sun,
+  TrendingUp,
+  Wand2,
+  Watch,
+  Wind,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react';
+
+/**
+ * Explicit icon registry — importing `* as Icons` from lucide-react would pull
+ * the entire icon set (~1 MB) into the bundle. Only icons referenced by the
+ * question bank are included here.
+ */
+const ICONS: Record<string, LucideIcon> = {
+  Blend,
+  Briefcase,
+  Brush,
+  CalendarDays,
+  Circle,
+  Cloud,
+  CloudSun,
+  Crown,
+  EyeOff,
+  Feather,
+  Flame,
+  Flower2,
+  Footprints,
+  Gem,
+  Heart,
+  Layers,
+  Leaf,
+  Minus,
+  Mountain,
+  Palette,
+  PartyPopper,
+  Repeat,
+  Scissors,
+  Shield,
+  Shuffle,
+  Sparkles,
+  Sun,
+  TrendingUp,
+  Wand2,
+  Watch,
+  Wind,
+  Zap,
+};
+
+export function OptionIcon({ name, className = 'h-[18px] w-[18px]' }: { name?: string; className?: string }) {
+  const Icon = (name ? ICONS[name] : undefined) ?? Sparkles;
+  return <Icon className={className} strokeWidth={1.6} aria-hidden="true" />;
+}
